@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .form-container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; }
+        .form-container h2 { text-align: center; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; }
+        .form-group input { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px; }
+        .form-group ul { list-style-type: none; padding: 0; margin: 5px 0 0 0; color: red; font-size: 0.9em; }
+        .form-group .helptext { font-size: 0.8em; color: #666; margin-top: 5px; }
+        button { background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; }
+        button:hover { background-color: #45a049; }
+        .messages { list-style-type: none; padding: 0; margin-bottom: 20px; }
+        .messages li { padding: 10px; margin-bottom: 10px; border-radius: 4px; }
+        .messages li.success { background-color: #e8f5e9; color: #4CAF50; border: 1px solid #a5d6a7; }
+        .messages li.error { background-color: #ffebee; color: #f44336; border: 1px solid #ef9a9a; }
+        nav { text-align: center; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Registro de Nuevo Usuario</h2>
+
+        <!-- Mostrar mensajes de Django (success, error, etc.) -->
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %} <!-- Token de seguridad OBLIGATORIO en Django -->
+
+            <!-- Renderizar el formulario campo por campo para más control -->
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }} <!-- Etiqueta del campo -->
+                    {{ field }} <!-- Input del campo -->
+                    {% if field.help_text %}
+                        <p class="helptext">{{ field.help_text|safe }}</p> <!-- Texto de ayuda -->
+                    {% endif %}
+                    {% if field.errors %}
+                        {{ field.errors }} <!-- Errores específicos del campo -->
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <!-- O puedes renderizarlo más rápido así: -->
+            <!-- {{ form.as_p }} --> <!-- Renderiza cada campo en un párrafo <p> -->
+
+            <button type="submit">Registrar</button>
+        </form>
+        <nav>
+            <a href="{% url 'index' %}">Volver al inicio</a>
+            <!-- Añade un enlace al login si tienes una vista de login -->
+        </nav>
+    </div>
+</body>
+</html>
