@@ -1,25 +1,22 @@
-# Django PostgreSQL Docker Setup
+# Django PostgreSQL Docker - Esqueleto Minimalista
 
-This project is a Dockerized setup for a Django application using PostgreSQL as the database. Below are the instructions for setting up and running the project.
+Este proyecto es una configuración minimalista de Django con Docker y PostgreSQL. El esqueleto está diseñado para mostrar una página simple "¡Hola, Django desde Docker!" mientras mantiene la configuración de PostgreSQL para desarrollo futuro.
 
-## Project Structure
+## Estructura del Proyecto
 
 ```
-django-postgres-docker
-├── app                 # Your Django app(s)
-│   ├── migrations
-│   │   └── __init__.py
+django-postgres-docker/
+├── app/
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
+│   ├── migrations/
+│   │   └── __init__.py
 │   ├── models.py
-│   ├── tests.py
-│   └── views.py
-├── project_name        # Your Django project settings
-│   ├── __init__.py
-│   ├── asgi.py
 │   ├── settings.py
+│   ├── tests.py
 │   ├── urls.py
+│   ├── views.py
 │   └── wsgi.py
 ├── docker-compose.yml
 ├── Dockerfile
@@ -28,57 +25,72 @@ django-postgres-docker
 └── requirements.txt
 ```
 
-## Prerequisites
+## Requisitos Previos
 
-- Docker and Docker Compose installed on your machine.
+- Docker y Docker Compose instalados en tu máquina.
 
-## Setup Instructions
+## Instrucciones de Configuración
 
-1. **Clone the Repository**: Clone this repository to your local machine.
+1. **Clonar el Repositorio**: Clona este repositorio en tu máquina local.
 
-2. **Navigate to the Project Directory**:
+2. **Navegar al Directorio del Proyecto**:
    ```bash
    cd django-postgres-docker
    ```
 
-3. **Build the Docker Containers**:
+3. **Construir los Contenedores Docker**:
    ```bash
    docker-compose build
    ```
 
-4. **Run the Docker Containers**:
+4. **Ejecutar los Contenedores Docker**:
    ```bash
    docker-compose up
    ```
 
-5. **Migrate the Database**:
-   In a new terminal, run the following command to apply migrations:
+5. **Migrar la Base de Datos**:
+   En una nueva terminal, ejecuta el siguiente comando para aplicar las migraciones:
    ```bash
    docker-compose run web python manage.py migrate
    ```
 
-6. **Create a Superuser** (optional):
-   You can create a superuser to access the Django admin:
-   ```bash
-   docker-compose run web python manage.py createsuperuser
-   ```
+6. **Acceder a la Aplicación**:
+   Abre tu navegador web y ve a `http://localhost:8080` para ver la aplicación Django en funcionamiento.
 
-7. **Access the Application**:
-   Open your web browser and go to `http://localhost:8000` to see your Django application running.
+## Uso
 
-## Usage
-
-- To stop the containers, press `CTRL+C` in the terminal where the containers are running.
-- To run tests, use:
+- Para detener los contenedores, presiona `CTRL+C` en la terminal donde están ejecutándose.
+- Para ejecutar los contenedores en segundo plano, usa:
   ```bash
-  docker-compose run web python manage.py test
+  docker-compose up -d
+  ```
+- Para ver los logs cuando los contenedores están en segundo plano:
+  ```bash
+  docker-compose logs
+  ```
+- Para detener y eliminar los contenedores:
+  ```bash
+  docker-compose down
   ```
 
-## Notes
+## Desarrollo Futuro
 
-- Ensure that you have configured your `settings.py` file to connect to the PostgreSQL database.
-- Update the `requirements.txt` file with any additional dependencies your project may need.
+Este esqueleto está preparado para expandirse:
 
-## License
+- El archivo `models.py` está listo para añadir modelos de base de datos.
+- La configuración de PostgreSQL ya está en place para desarrollo de bases de datos relacionales.
+- El archivo `admin.py` está preparado para registrar modelos en el panel de administración de Django.
 
-This project is licensed under the MIT License.
+## Personalización
+
+Para modificar el mensaje mostrado, edita la función `index` en el archivo `app/views.py`.
+
+## Notas
+
+- La configuración actual expone la aplicación en el puerto 8080.
+- Para cambiar la configuración de la base de datos, edita las variables de entorno en `docker-compose.yml`.
+- Para añadir dependencias adicionales, actualiza el archivo `requirements.txt`.
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT.
