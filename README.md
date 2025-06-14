@@ -18,16 +18,26 @@ Este proyecto es una aplicación web desarrollada con Django que permite el regi
 ## 📁 Estructura del Proyecto
 
 ```plaintext
-├── app/                 # Código fuente de la aplicación Django
-│   ├── users/           # App de usuarios
-│   ├── templates/       # HTMLs personalizados
-│   ├── static/          # Archivos estáticos (CSS, imágenes)
-│   └── ...
-├── docker/
-│   ├── web/             # Dockerfile de Django
-│   └── db/              # Configuración de MySQL
-├── docker-compose.yml   # Orquestación con Docker Compose
-└── README.md            # Este archivo
+app/
+├── admin.py
+├── apps.py
+├── forms.py
+├── models.py
+├── settings.py
+├── tests.py
+├── urls.py
+├── views.py
+├── wsgi.py
+├── migrations/
+├── static/
+│   ├── fondo_index.jpg
+│   ├── fondo_login.jpg
+│   └── fondo_register.jpg
+└── templates/
+    ├── index.html
+    ├── login.html
+    └── register.html
+docker-compose.yml
 ```
 ---
 
@@ -47,19 +57,30 @@ Este proyecto es una aplicación web desarrollada con Django que permite el regi
 git clone https://github.com/tu_usuario/tu_repositorio.git
 cd tu_repositorio
 ```
-## Construye y ejecuta los contenedores:
+
+---
+
+## ⭐ Construye y ejecuta los contenedores:
 
 - Aplica las migraciones y crea un superusuario:
 - Abre una terminal en el contenedor web:
 - Accede a la aplicación:
 - Abre tu navegador en http://localhost:8000
 
+---
+
 ## 🎨 Personalización
 - Imágenes de fondo: Puedes cambiar las imágenes en la carpeta static para personalizar el aspecto visual.
 - Templates: Modifica los archivos en templates para cambiar la interfaz.
 - Funcionalidad: Amplía las vistas y modelos en views.py y models.py para agregar más características.
+
+---
+
 ## 🔒 Seguridad
 - Las vistas principales están protegidas: solo usuarios autenticados pueden acceder a la página principal.
 - Las sesiones se gestionan de forma segura usando el sistema de autenticación de Django.
+
+---
+
 ## 📄 Licencia
 Este proyecto es de uso académico y puedes modificarlo libremente para tus necesidades.
