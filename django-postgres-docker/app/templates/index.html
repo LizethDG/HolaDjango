@@ -1,0 +1,84 @@
+<!-- filepath: app/templates/index.html -->
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+    <title>Bienvenido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/fondo_index.jpg'); /* Reemplaza con tu imagen */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        /* Estilos para el menú */
+        .menu {
+            margin-top: 20px;
+        }
+
+        .menu a {
+            display: block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .menu a:hover {
+            background-color: #0056b3;
+        }
+
+        button {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Hola, {{ request.user.first_name }}!</h1>
+        <p>Bienvenido a la app protegida.</p>
+
+        <!-- Menú -->
+        <div class="menu">
+            <a href="#">Lista de usuarios</a>
+            <a href="#">Otra opción</a>
+        </div>
+
+        <a href="{% url 'logout' %}"><button>Cerrar sesión</button></a>
+    </div>
+</body>
+</html>

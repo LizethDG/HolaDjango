@@ -57,12 +57,12 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'postgres'),
-        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'password'),
-        'HOST': 'db',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('DJANGO_DB_NAME', 'mydatabase'),
+        'USER': os.environ.get('DJANGO_DB_USER', 'myuser'),
+        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', 'mypassword'),
+        'HOST': os.environ.get('DJANGO_DB_HOST', 'db'),
+        'PORT': '3306',
     }
 }
 
