@@ -9,7 +9,7 @@ Este proyecto es una aplicación web desarrollada con Django que permite el regi
 - ✅ Registro de usuarios con nombre, correo electrónico y contraseña  
 - 🔐 Inicio de sesión seguro  
 - 🖼️ Interfaz moderna y responsiva con imágenes de fondo  
-- 📋 Listado de usuarios *(puedes ampliar esta funcionalidad)*  
+- 📋 Listado de usuarios
 - 🧠 Gestión de sesiones y cierre de sesión  
 - 🐳 Configuración lista para desarrollo con Docker y MySQL  
 
